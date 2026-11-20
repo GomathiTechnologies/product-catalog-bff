@@ -12,6 +12,10 @@ public class ProductCatalogClient {
     public ProductCatalogClient(RestClient.Builder builder, @Value("${product-catalog.base-url}") String baseUrl) {
         this.restClient = builder.baseUrl(baseUrl).build();
     }
+    public JsonNode getProvinceProducts(String province) {
+        return restClient.get().uri(builder -> builder.path("/dynamic/province/products")
+                .queryParam("province", province).build()).retrieve().body(JsonNode.class);
+    }
     public JsonNode chat(JsonNode request) {
         return restClient.post().uri("/ai/chat").contentType(MediaType.APPLICATION_JSON)
                 .body(request).retrieve().body(JsonNode.class);

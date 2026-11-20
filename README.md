@@ -24,3 +24,5 @@ Request the catalog at `GET http://localhost:8080/api/products`:
 Set `PRODUCT_CATALOG_BASE_URL` to override the catalog service URL (default `http://localhost:8081`). Run the API test with `mvn test`. The catalog service supplies the sample data.
 
 The BFF also forwards `POST /ai/chat` with a JSON body such as `{"prompt":"Hello"}` to the catalog service and returns its response.
+
+`GET /dynamic/province/products?province=ON` forwards the selected province or territory to the catalog service and returns its plans or availability message.
