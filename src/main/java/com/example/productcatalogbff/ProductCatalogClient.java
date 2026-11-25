@@ -20,6 +20,10 @@ public class ProductCatalogClient {
         return restClient.post().uri("/ai/chat").contentType(MediaType.APPLICATION_JSON)
                 .body(request).retrieve().body(JsonNode.class);
     }
+    public JsonNode knowledgeChat(JsonNode request) {
+        return restClient.post().uri("/ai/knowledge/chat").contentType(MediaType.APPLICATION_JSON)
+                .body(request).retrieve().body(JsonNode.class);
+    }
     public List<Product> getProducts() {
         return restClient.get().uri("/api/products").retrieve().body(new ParameterizedTypeReference<List<Product>>() {});
     }
